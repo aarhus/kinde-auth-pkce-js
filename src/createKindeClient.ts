@@ -386,7 +386,9 @@ const createKindeClient = async (
       is_create_org,
       org_name = '',
       org_code,
-      authUrlParams = {}
+      authUrlParams = {},
+      pricing_table_key = '',
+      plan_interest = '',
     } = options;
 
     if (!app_state.kindeOriginUrl) {
@@ -420,6 +422,14 @@ const createKindeClient = async (
     if (is_create_org) {
       searchParams.is_create_org = String(is_create_org);
       searchParams.org_name = org_name;
+    }
+
+    if (pricing_table_key) {
+     searchParams.searchParams=pricing_table_key;
+    }
+    
+    if (plan_interest) {
+        searchParams.plan_interest = plan_interest;
     }
 
     const urlSearchParams = new URLSearchParams(
